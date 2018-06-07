@@ -4,9 +4,9 @@ INSERT INTO writer VALUES(2 , ‘จุฑาธิป พึ่งละออ�
 
 INSERT INTO writer VALUES(3 , ‘Pensri Kiengsiri’ , null , null);
 
-INSERT INTO writer VALUES(4 , ‘Ha-Hyun’ , ‘Hyunmeen’ , null);
+INSERT INTO writer VALUES(4 , ‘Ha-Hyun’ , ‘Hyunmeen’ , null)
 
-INSERT INTO writer VALUES(5 , ‘นิตยสารเกมออนไลน์’ , null , null);
+INSERT INTO writer VALUES(5 , ‘นิตยสารเกมออนไลน์’ , null , null)
 
 
 

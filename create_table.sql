@@ -24,9 +24,9 @@ CREATE TABLE book(
 
 CREATE TABLE writer(
     writer_id number PRIMARY KEY,
-    writer_name varchar2(30) null,
-    translater varchar2(30) null,
-    composer varchar2(30) null
+    writer_name varchar2(100) null,
+    translater varchar2(100) null,
+    composer varchar2(100) null
 );
 
 CREATE TABLE BASKET(
@@ -46,8 +46,8 @@ create table use(
 
 CREATE TABLE Publisher(
     Pub_id number PRIMARY KEY,
-    Pub_address varchar2(20) not null,
-    Pub_name varchar2(20) not null,
+    Pub_address varchar2(100) not null,
+    Pub_name varchar2(100) not null,
     Book_id number not null,
     FOREIGN KEY (book_id) REFERENCES BOOK(book_id)
 );

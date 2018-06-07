@@ -6,14 +6,14 @@ CREATE TABLE customer(
     cus_Address varchar2(30) not null,
     date_register date not null,
 PRIMARY KEY(cus_id)
-)
+);
 
 CREATE TABLE account(
     username    varchar(20) primary key,
     password    varchar(20) not null,
     cus_id      number,
     FOREIGN KEY (cus_id) REFERENCES customer(cus_id)
-)
+);
 CREATE TABLE book(
     book_id	number not null,
     book_name varchar(20) not null,
@@ -41,7 +41,7 @@ create table use(
     id  number PRIMARY KEY,
     FOREIGN KEY (username) REFERENCES account(username),
     FOREIGN KEY (id) REFERENCES BASKET(id)
-)
+);
 
 
 CREATE TABLE Publisher(
@@ -58,7 +58,7 @@ create table use(
     PRIMARY KEY(username,id),
     FOREIGN KEY (username) REFERENCES account(username),
     FOREIGN KEY (id) REFERENCES BASKET(id)
-)
+);
 
 create table buy(
     id  number not null,
@@ -66,7 +66,7 @@ create table buy(
     PRIMARY KEY(id,book_id),
     FOREIGN KEY (book_id) REFERENCES book(book_id),
     FOREIGN KEY (id) REFERENCES BASKET(id)
-)
+);
 
 create table write(
     writer_id  number not null,
@@ -74,4 +74,4 @@ create table write(
     PRIMARY KEY(writer_id,book_id),
     FOREIGN KEY (book_id) REFERENCES book(book_id),
     FOREIGN KEY (writer_id) REFERENCES writer(writer_id)
-)
+);

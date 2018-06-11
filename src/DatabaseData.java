@@ -20,7 +20,7 @@ public class DatabaseData {
     
     public ResultSet getPassword(String str) {
         try {
-            String query = "select password,cus_id from BOOK_ONLINE.account WHERE username = '"+str+"'";
+            String query = "select * from BOOK_ONLINE.account,BOOK_ONLINE.customer  WHERE username = '"+str+"' AND account.cus_id = customer.cus_id";
             ResultSet rs = st.executeQuery(query);
             return rs;
         } catch (Exception e) {

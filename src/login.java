@@ -139,11 +139,19 @@ public class login extends javax.swing.JFrame {
             while(rs.next()){
                 String cpass = rs.getString("password");
                 String id = rs.getString("cus_id");
+                String permiss = rs.getString("permission");
+                
                 if(cpass.compareTo(ppass) == 0){
                     cus_id = Integer.parseInt(id);
                     user = puser;
-                    this.setVisible(false);
-                    new gui().setVisible(true);
+                    if(permiss.compareTo("1") == 0){
+                        this.setVisible(false);
+                        new admin().setVisible(true);
+                    }
+                    else{
+                        this.setVisible(false);
+                        new gui().setVisible(true);
+                    }
                 }
             }
         }

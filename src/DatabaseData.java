@@ -6,6 +6,7 @@ public class DatabaseData {
     public DatabaseData(Statement st) {
         this.st = st;
     }
+    
     public ResultSet getData(String str) {
         try {
             String query = "select * from BOOK_ONLINE." + str;
@@ -17,8 +18,15 @@ public class DatabaseData {
         }
     }
     
-    public boolean checkUser(String user, String pass) throws SQLException {
-        boolean i = st.execute("SELECT password FROM account WHERE username = 'miwtoo';");
-        return i;
+    public ResultSet getPassword(String str) {
+        try {
+            String query = "select password,cus_id from BOOK_ONLINE.account WHERE username = '"+str+"'";
+            ResultSet rs = st.executeQuery(query);
+            return rs;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return null;
+        }
     }
+    
 }

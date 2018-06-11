@@ -16,6 +16,8 @@ import java.sql.SQLException;
 public class login extends javax.swing.JFrame {
     static DatabaseConnection db = new DatabaseConnection();
     static DatabaseData my;
+    static int cus_id;
+    static String user;
     /**
      * Creates new form login
      */
@@ -136,8 +138,10 @@ public class login extends javax.swing.JFrame {
             ResultSet rs = my.getPassword(puser);
             while(rs.next()){
                 String cpass = rs.getString("password");
-                
+                String id = rs.getString("cus_id");
                 if(cpass.compareTo(ppass) == 0){
+                    cus_id = Integer.parseInt(id);
+                    user = puser;
                     this.setVisible(false);
                     new gui().setVisible(true);
                 }

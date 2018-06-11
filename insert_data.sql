@@ -34,3 +34,5 @@ INSERT INTO use VALUES(2,2);
 INSERT INTO use VALUES(3,3);
 INSERT INTO use VALUES(4,4);
 INSERT INTO use VALUES(5,5);
+
+insert into basket value(1,2,"in process");

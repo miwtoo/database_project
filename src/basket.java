@@ -104,9 +104,7 @@ public class basket extends javax.swing.JFrame {
         } 
     public void showData(){
         String Purchase = "select * form basket";
-        System.out.print(Purchase);
-        System.out.println();
-        System.out.println("SUCCESS");
+        System.out.println(Purchase);
     }
     }//GEN-LAST:event_jButton1ActionPerformed
 

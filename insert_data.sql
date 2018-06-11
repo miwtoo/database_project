@@ -35,4 +35,8 @@ INSERT INTO use VALUES(3,3);
 INSERT INTO use VALUES(4,4);
 INSERT INTO use VALUES(5,5);
 
+<<<<<<< HEAD
 insert into basket value(1,3,"in process");
+=======
+insert into basket value(1,2,"in process");
+>>>>>>> 2afc986242fb6fbbb6ec199b97873aceb666c54d

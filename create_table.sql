@@ -30,10 +30,12 @@ CREATE TABLE writer(
 );
 
 CREATE TABLE BASKET(
-    Id              number          PRIMARY KEY,
+    cus_id          number          not null,
     Book_id         number          not null,
     status          varchar(20)     null,
-    FOREIGN KEY (book_id) REFERENCES BOOK(book_id)
+    PRIMARY KEY(cus_id,book_id),
+    FOREIGN KEY (book_id) REFERENCES BOOK(book_id),
+    FOREIGN KEY (cus_id) REFERENCES customer(cus_id)
 );
 
 
@@ -47,11 +49,11 @@ CREATE TABLE Publisher(
 );
 
 create table buy(
-    id              number          not null,
+    cus_id          number          not null,
     book_id	        number          not null,
     PRIMARY KEY(id,book_id),
     FOREIGN KEY (book_id) REFERENCES book(book_id),
-    FOREIGN KEY (id) REFERENCES BASKET(id)
+    FOREIGN KEY (customer) REFERENCES customer(cus_id)
 );
 
 create table write(

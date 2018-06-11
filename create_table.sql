@@ -32,7 +32,7 @@ CREATE TABLE writer(
 CREATE TABLE BASKET(
     Id              number          PRIMARY KEY,
     Book_id         number          not null,
-    Date_shipping   date,
+    status          varchar(20)     null,
     FOREIGN KEY (book_id) REFERENCES BOOK(book_id)
 );
 
@@ -44,14 +44,6 @@ CREATE TABLE Publisher(
     Pub_name        varchar2(100)   not null,
     Book_id         number          not null,
     FOREIGN KEY (book_id) REFERENCES BOOK(book_id)
-);
-
-create table use(
-    username        varchar(20)     not null,
-    id              number          not null,
-    PRIMARY KEY(username,id),
-    FOREIGN KEY (username) REFERENCES account(username),
-    FOREIGN KEY (id) REFERENCES BASKET(id)
 );
 
 create table buy(

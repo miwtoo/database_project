@@ -17,6 +17,12 @@ INSERT INTO Publisher VALUES(3,'Seoul','Woman publisher',3);
 INSERT INTO Publisher VALUES(4,'Bangkok','แจ่มใส, สนพ.',4);
 INSERT INTO Publisher VALUES(5,'Bangkok','ทรู มีเดีย โซลูชั่นส์, บจก.',5);
 
+INSERT INTO customer VALUES (1,'m','a',to_date('010101','MMDDYY'),'aaaa',to_date('020908','MMDDYY'),0);
+INSERT INTO customer VALUES (2,'m','b',to_date('020304','MMDDYY'),'bbbb',to_date('030908','MMDDYY'),1);
+INSERT INTO customer VALUES (3,'w','c',to_date('120314','MMDDYY'),'cccc',to_date('032208','MMDDYY'),1);
+INSERT INTO customer VALUES (4,'w','d',to_date('122314','MMDDYY'),'dddd',to_date('042408','MMDDYY'),1);
+INSERT INTO customer VALUES (5,'m','e',to_date('100304','MMDDYY'),'eeee',to_date('051609','MMDDYY'),0);
+
 INSERT INTO account VALUES('miwtoo','123456',1);
 INSERT INTO account VALUES('erntle','000000',2);
 INSERT INTO account VALUES('kritser','789456',3);
@@ -29,11 +35,6 @@ INSERT INTO write VALUES(3,3);
 INSERT INTO write VALUES(4,4);
 INSERT INTO write VALUES(5,5);
 
-INSERT INTO use VALUES(1,1);
-INSERT INTO use VALUES(2,2);
-INSERT INTO use VALUES(3,3);
-INSERT INTO use VALUES(4,4);
-INSERT INTO use VALUES(5,5);
 
 insert into basket values(1,1,'in process');
 insert into basket values(1,2,'in process');

@@ -1,3 +1,7 @@
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +13,8 @@
  * @author Miwtoo-NB
  */
 public class admin extends javax.swing.JFrame {
-
+    static DatabaseConnection db = new DatabaseConnection();
+    static DatabaseData my;
     /**
      * Creates new form admin
      */
@@ -50,7 +55,7 @@ public class admin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        BookTable = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField10 = new javax.swing.JTextField();
@@ -185,18 +190,26 @@ public class admin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("ADD", jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        BookTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Book ID", "Book Name"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(BookTable);
 
         jButton2.setText("Delete");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +225,12 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Update");
+        jButton3.setText("Show");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -281,10 +299,30 @@ public class admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        try {
+            DefaultTableModel model = (DefaultTableModel)
+            BookTable.getModel();
+            model.setRowCount(0);
+            ResultSet rs = my.getData("book");
+            while (rs.next()) {
+                String book_id = rs.getString("book_id");
+                String book_name = rs.getString("book_name");
+                System.out.println(book_id+ " "+ book_name);
+                model.addRow(new String[]{book_id, book_name});
+            }
+        } catch (Exception exc) {
+            System.out.println("Err: " + exc);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        db.connectDB();
+        my = new DatabaseData(db.getSt());
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -317,6 +355,7 @@ public class admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable BookTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -335,7 +374,6 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;

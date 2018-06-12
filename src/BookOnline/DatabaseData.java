@@ -31,8 +31,8 @@ public class DatabaseData {
         }
     }
     
-    public boolean deleteAdvisorData(String id) throws SQLException {
-        boolean i = st.execute("");
+    public boolean deleteBookData(String id) throws SQLException {
+        boolean i = st.execute("DELETE FROM BOOK_ONLINE.book WHERE book_id = " + id);
         return i;
     }
     

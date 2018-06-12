@@ -13,7 +13,7 @@ public class admin extends javax.swing.JFrame {
         
         try {
             DefaultTableModel model = (DefaultTableModel)
-            BookTable.getModel();
+            del_BookTable.getModel();
             model.setRowCount(0);
             ResultSet rs = my.getData("book");
             while (rs.next()) {
@@ -67,9 +67,9 @@ public class admin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        BookTable = new javax.swing.JTable();
+        del_BookTable = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
+        tb_del_bookid = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
@@ -115,6 +115,11 @@ public class admin extends javax.swing.JFrame {
         });
 
         jButton1.setText("Add Book");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -203,7 +208,7 @@ public class admin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("ADD", jPanel1);
 
-        BookTable.setModel(new javax.swing.table.DefaultTableModel(
+        del_BookTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -222,7 +227,7 @@ public class admin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(BookTable);
+        jScrollPane1.setViewportView(del_BookTable);
 
         jButton2.setText("Delete");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -244,12 +249,12 @@ public class admin extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tb_del_bookid, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
@@ -261,12 +266,12 @@ public class admin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tb_del_bookid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
+                .addComponent(jScrollPane1))
         );
 
         jTabbedPane1.addTab("DEL", jPanel2);
@@ -304,6 +309,22 @@ public class admin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        String del_id = tb_del_bookid.getText();
+        
+        try {
+            if (my.deleteBookData(del_id)) {
+                DefaultTableModel model =(DefaultTableModel)del_BookTable.getModel();
+                model.setRowCount(0);
+                ResultSet rs = my.getData("book");
+                while (rs.next()) {
+                    String id = rs.getString("book_id");
+                    String name = rs.getString("book_name");
+                    model.addRow(new String[]{id, name});
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -325,6 +346,10 @@ public class admin extends javax.swing.JFrame {
         this.setVisible(false);
         new login().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,7 +387,7 @@ public class admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable BookTable;
+    private javax.swing.JTable del_BookTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -383,7 +408,6 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -392,5 +416,6 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField tb_del_bookid;
     // End of variables declaration//GEN-END:variables
 }

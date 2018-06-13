@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseData {
-    static int cis = new login().cus_id;
+    static int cid = new login().cus_id;
     
     private Statement st;
     

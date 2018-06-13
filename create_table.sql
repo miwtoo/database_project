@@ -26,7 +26,7 @@ CREATE TABLE writer(
     writer_id       number          PRIMARY KEY,
     writer_name     varchar2(100)   null,
     translater      varchar2(100)   null,
-    composer varchar2(100)          null
+    composer        varchar2(100)   null
 );
 
 CREATE TABLE BASKET(
@@ -53,7 +53,7 @@ create table buy(
     book_id	        number          not null,
     PRIMARY KEY(id,book_id),
     FOREIGN KEY (book_id) REFERENCES book(book_id),
-    FOREIGN KEY (customer) REFERENCES customer(cus_id)
+    FOREIGN KEY (cus_id) REFERENCES customer(cus_id)
 );
 
 create table write(
@@ -63,3 +63,14 @@ create table write(
     FOREIGN KEY (book_id) REFERENCES book(book_id),
     FOREIGN KEY (writer_id) REFERENCES writer(writer_id)
 );
+
+create sequence cus_seq;
+
+create on repleace triger before_cus_insert
+before insert on customer
+when (NEW.cus_id IS NULL)
+begin
+    SELECT cus_seq.NEXTVAL
+    INTO :NEW.cus_id
+    FROM DUAL;
+END;

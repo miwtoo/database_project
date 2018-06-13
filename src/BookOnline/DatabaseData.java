@@ -36,4 +36,10 @@ public class DatabaseData {
         return i;
     }
     
+    public boolean insertBookData(String id, String name) throws SQLException { 
+
+        int i = st.executeUpdate("insert into book VALUES('')"); 
+        if (i > -1) {return true;} 
+        else {return false;} 
+    }
 }

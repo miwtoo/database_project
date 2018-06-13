@@ -5,6 +5,7 @@ CREATE TABLE customer(
     BirthDay        date            not null,
     cus_Address     varchar2(30)    not null,
     date_register   date            not null,
+    PERMISSION      number          null,
 PRIMARY KEY(cus_id)
 );
 
@@ -19,6 +20,7 @@ CREATE TABLE book(
     book_name       varchar(100)    not null,
     type            varchar(50)     not null,
     price_book      number          not null,
+    isbn            number          null,
     PRIMARY KEY (book_id)
 );
 

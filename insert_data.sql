@@ -43,3 +43,9 @@ insert into basket values(2,3,'success');
 insert into basket values(2,5,'success');
 insert into basket values(3,1,'in process');
 insert into basket values(3,5,'in process');
+
+
+INSERT INTO book VALUES(1,'นาซ่าก็พาเธอกลับมาไม่ได้', 'ทั่วไป', 185.25, 9786161823269 );
+INSERT INTO writer VALUES(1 , 'อิสญะ ตระกูลพุทธรักษา' , null , null);
+INSERT INTO Publisher VALUES(1,'Bangkok','springbooks',1);
+INSERT INTO write VALUES(1,1);

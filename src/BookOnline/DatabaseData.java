@@ -5,9 +5,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseData {
-
+    static int cis = new login().cus_id;
+    
     private Statement st;
-    static int cid = new login().cus_id;
+    
 
     public DatabaseData(Statement st) {
         this.st = st;
@@ -51,7 +52,7 @@ public class DatabaseData {
             return null;
         }
     }
-
+    
     public boolean updateStatus() throws SQLException {
         int i = st.executeUpdate("update BOOK_ONLINE.basket set status = 'success' where cus_id = '"+cid+"'");
         if (i > -1) {

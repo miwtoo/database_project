@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Miwtoo-NB
  */
 public class login extends javax.swing.JFrame {
-    static int cus_id;
+    static int cus_id ;
     static String user;
     /**
      * Creates new form login
@@ -132,10 +132,11 @@ public class login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String puser = username.getText();
+        String puser = username.getText(); 
         String ppass = password.getText();
         
         try{
+            System.out.println("cus_id = "+cus_id);
             ResultSet rs = my.getPassword(puser);
             while(rs.next()){
                 String cpass = rs.getString("password");
@@ -152,7 +153,7 @@ public class login extends javax.swing.JFrame {
                     else{
                         this.setVisible(false);
                         new basket().setVisible(true);
-                        System.out.println(cus_id);
+                        
                     }
                 }
             }

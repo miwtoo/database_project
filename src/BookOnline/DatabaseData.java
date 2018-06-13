@@ -36,10 +36,10 @@ public class DatabaseData {
         return i;
     }
     
-    public boolean insertBookData(String id, String name) throws SQLException { 
+    public boolean insertBookData() throws SQLException { 
 
-        int i = st.executeUpdate("insert into book VALUES('')"); 
-        if (i > -1) {return true;} 
+        int i = st.executeUpdate("INSERT ALL  INTO BOOK_ONLINE.book VALUES(BOOK_ONLINE.book_seq.nextval ,'นาซ่าก็พาเธอกลับมาไม่ได้', 'ทั่วไป', 185.25, 9786161823269 )  INTO BOOK_ONLINE.writer VALUES(BOOK_ONLINE.write_seq.nextval , 'อิสญะ ตระกูลพุทธรักษา' , null , null)  INTO BOOK_ONLINE.Publisher VALUES(BOOK_ONLINE.book_seq.nextval ,'Bangkok','springbooks',BOOK_ONLINE.book_seq.nextval)  INTO BOOK_ONLINE.write VALUES(BOOK_ONLINE.write_seq.nextval,BOOK_ONLINE.book_seq.nextval)  SELECT * FROM dual"); 
+        if (i > -1) {return true;}
         else {return false;} 
     }
 }

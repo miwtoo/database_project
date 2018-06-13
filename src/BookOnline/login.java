@@ -127,7 +127,7 @@ public class login extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new admin().setVisible(true);
+        new basket().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -151,7 +151,8 @@ public class login extends javax.swing.JFrame {
                     }
                     else{
                         this.setVisible(false);
-                        new gui().setVisible(true);
+                        new basket().setVisible(true);
+                        System.out.println(cus_id);
                     }
                 }
             }

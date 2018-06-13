@@ -31,7 +31,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="393" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -41,6 +40,11 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -48,7 +52,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="356" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -67,49 +71,40 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="basket">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Book Name" type="java.lang.Object">
-                  <Data value="&#xe40;&#xe02;&#xe35;&#xe22;&#xe19;&#xe42;&#xe1b;&#xe23;&#xe41;&#xe01;&#xe23;&#xe21;&#xe1a;&#xe19;&#xe10;&#xe32;&#xe19;&#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25; MySQL"/>
-                  <Data value="&#xe01;&#xe32;&#xe23;&#xe43;&#xe0a;&#xe49;&#xe42;&#xe1b;&#xe23;&#xe41;&#xe01;&#xe23;&#xe21;&#xe08;&#xe31;&#xe14;&#xe01;&#xe32;&#xe23;&#xe10;&#xe32;&#xe19;&#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25; Access 2007"/>
-                  <Data value="&#xe40;&#xe08;&#xe32;&#xe30;&#xe25;&#xe36;&#xe01; Excel &#xe01;&#xe32;&#xe23;&#xe43;&#xe0a;&#xe49; PivotTable &#xe01;&#xe31;&#xe1a;&#xe07;&#xe32;&#xe19;&#xe10;&#xe32;&#xe19;&#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;&#xe02;&#xe31;&#xe49;&#xe19;&#xe2a;&#xe39;&#xe07;&#xe40;&#xe08;&#xe32;&#xe30;&#xe25;&#xe36;&#xe01; Excel &#xe01;&#xe32;&#xe23;&#xe43;&#xe0a;&#xe49; PivotTable &#xe01;&#xe31;&#xe1a;&#xe07;&#xe32;&#xe19;&#xe10;&#xe32;&#xe19;&#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;&#xe02;&#xe31;&#xe49;&#xe19;&#xe2a;&#xe39;&#xe07;"/>
-                  <Data value="&#xe23;&#xe30;&#xe1a;&#xe1a;&#xe08;&#xe31;&#xe14;&#xe01;&#xe32;&#xe23;&#xe10;&#xe32;&#xe19;&#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25; (&#xe23;&#xe2b;&#xe31;&#xe2a;&#xe27;&#xe34;&#xe0a;&#xe32; 3204-2004)"/>
-                </Column>
-                <Column editable="true" title="Author" type="java.lang.Object">
-                  <Data value="&#xe2a;&#xe21;&#xe1e;&#xe07;&#xe29;&#xe4c; &#xe2d;&#xe23;&#xe34;&#xe2a;&#xe23;&#xe34;&#xe22;&#xe27;&#xe07;&#xe28;&#xe4c;"/>
-                  <Data value="&#xe1d;&#xe48;&#xe32;&#xe22;&#xe15;&#xe33;&#xe23;&#xe32;&#xe27;&#xe34;&#xe0a;&#xe32;&#xe01;&#xe32;&#xe23;&#xe04;&#xe2d;&#xe21;&#xe1e;&#xe34;&#xe27;&#xe40;&#xe15;&#xe2d;&#xe23;&#xe4c;"/>
-                  <Data value=""/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="Translator" type="java.lang.Object"/>
-                <Column editable="true" title="Price" type="java.lang.Object">
-                  <Data value="161.10"/>
-                  <Data value="89.10"/>
-                  <Data value="161.10"/>
-                  <Data value="144.00"/>
-                </Column>
+              <Table columnCount="5" rowCount="0">
+                <Column editable="false" title="Book_id" type="java.lang.Object"/>
+                <Column editable="false" title="Book _name" type="java.lang.Object"/>
+                <Column editable="false" title="Type" type="java.lang.Object"/>
+                <Column editable="false" title="Price_book" type="java.lang.Object"/>
+                <Column editable="false" title="ISBN" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>

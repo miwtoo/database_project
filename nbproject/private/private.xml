@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/DatabaseConnection.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/DatabaseData.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/admin.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/gui.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/basket.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/login.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/register.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/BookOnline.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/history.java</file>
-=======
             <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/DatabaseData.java</file>
             <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/admin.java</file>
             <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/basket.java</file>
+            <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/admin_login.java</file>
             <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/login.java</file>
-            <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/gui.java</file>
-            <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/BookOnline.java</file>
->>>>>>> 1ae4b4675ff745e92ddb1c39c746db9e4dded682
         </group>
     </open-files>
 </project-private>

@@ -4,6 +4,7 @@ package BookOnline;
 import static BookOnline.BookOnline.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -147,7 +148,7 @@ public class login extends javax.swing.JFrame {
                 if(cpass.compareTo(ppass) == 0){
                     cus_id = Integer.parseInt(id);
                     user = puser;
-<<<<<<< HEAD
+
                     if(permiss.compareTo("1") == 0){
                         this.setVisible(false);
                         new admin().setVisible(true);
@@ -156,13 +157,13 @@ public class login extends javax.swing.JFrame {
                         this.setVisible(false);
                         new gui().setVisible(true);
                     }
-=======
+
                     this.setVisible(false);
                     new gui().setVisible(true);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Password Wrong!");
->>>>>>> miw
+
                 }
             }
         }

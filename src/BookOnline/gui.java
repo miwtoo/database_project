@@ -122,7 +122,6 @@ public class gui extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-<<<<<<< HEAD
                 .addComponent(loging)
                 .addGap(151, 151, 151)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,7 +135,6 @@ public class gui extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 835, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-=======
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,9 +149,8 @@ public class gui extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                         .addComponent(jButton4)
-                        .addGap(51, 51, 51))))
->>>>>>> miw
-        );
+                        .addGap(51, 51, 51)))
+						);
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -238,8 +235,6 @@ public class gui extends javax.swing.JFrame {
             boolean a = Boolean.valueOf(jTable1.getValueAt(i, 0).toString());
                 if(a){
                     String book_id = jTable1.getValueAt(i, 1).toString();
-                    
-                    
                     
                     my.insertBasket(id,book_id);
                     JOptionPane.showMessageDialog(null, book_id);

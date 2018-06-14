@@ -42,9 +42,7 @@ public class DatabaseData {
         if (i > -1) {return true;} 
         else {return false;} 
     }
-<<<<<<< HEAD
-}
-=======
+
     public boolean updateStatus(int cid) throws SQLException {
         int i = st.executeUpdate("update BOOK_ONLINE.basket set status = 'success' where cus_id = '"+cid+"'");
         if (i > -1) {
@@ -77,5 +75,3 @@ public class DatabaseData {
     
 
 }
-
->>>>>>> miw

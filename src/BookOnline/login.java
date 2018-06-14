@@ -135,21 +135,26 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String puser = username.getText(); 
         String ppass = password.getText();
-        
+        if(puser.isEmpty() || ppass.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Input Something!");
+        }
         try{
             ResultSet rs = my.getPassword(puser);
             while(rs.next()){
                 String cuser = rs.getString("username");
                 String cpass = rs.getString("password");
                 String id = rs.getString("cus_id");
-                if(cpass.compareTo(ppass) == 0){
-                cus_id = Integer.parseInt(id);
-                user = puser;
-                    this.setVisible(false);
-                    new gui().setVisible(true);
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Password Wrong!");
+                if(puser.isEmpty() || ppass.isEmpty()){
+                    
+                    if(cpass.compareTo(ppass) == 0){
+                    cus_id = Integer.parseInt(id);
+                    user = puser;
+                        this.setVisible(false);
+                        new gui().setVisible(true);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Password Wrong!");
+                    }
                 }
             }
 

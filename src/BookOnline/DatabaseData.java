@@ -67,6 +67,26 @@ public class DatabaseData {
             return false;
         }
     }
+    public boolean insertBasket(int id, String bookid) throws SQLException { 
+        
+        int i = st.executeUpdate("insert into BOOK_ONLINE.basket values("+id+","+bookid+",'in process')"); 
+        if (i > -1) {return true;}
+        else {return false;}
+        
+    }
+    
+    
+    public ResultSet getBook() {
+        try {
+            String query = "select * from BOOK_ONLINE.VIEW_BOOKA";
+            ResultSet rs = st.executeQuery(query);
+            System.out.println(query);
+            return rs;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return null;
+        }
+    }
 
     
 

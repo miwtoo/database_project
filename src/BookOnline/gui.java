@@ -1,10 +1,11 @@
 package BookOnline;
 
-
 import static BookOnline.BookOnline.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,16 +17,35 @@ import javax.swing.table.DefaultTableModel;
  * @author Miwtoo-NB
  */
 public class gui extends javax.swing.JFrame {
+
     static int id = new login().cus_id;
     static String user = new login().user;
-    
-    
+
     /**
      * Creates new form gui
      */
     public gui() {
         initComponents();
         loging.setText("Welcome : " + user);
+        try {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+            model.setRowCount(0);
+            ResultSet rs = my.getBook();
+
+            while (rs.next()) {
+                String id = rs.getString("book_id");
+                String name = rs.getString("book_name");
+                String wri_name = rs.getString("WRITER_NAME");
+                String tran = rs.getString("TRANSLATER");
+                String price = rs.getString("PRICE_BOOK");
+                String pubname = rs.getString("PUB_NAME");
+                model.addRow(new String[]{null,id,name, wri_name, tran , price,pubname});
+            }
+        } catch (Exception exc) {
+            System.out.println("Err: " + exc);
+        }
+        
     }
 
     /**
@@ -37,6 +57,7 @@ public class gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -69,17 +90,14 @@ public class gui extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Boolean(false), "เขียนโปรแกรมบนฐานข้อมูล MySQL", "สมพงษ์ อริสริยวงศ์", null, "161.10"},
-                {null, "การใช้โปรแกรมจัดการฐานข้อมูล Access 2007", "ฝ่ายตำราวิชาการคอมพิวเตอร์", null, "89.10"},
-                {null, "เจาะลึก Excel การใช้ PivotTable กับงานฐานข้อมูลขั้นสูงเจาะลึก Excel การใช้ PivotTable กับงานฐานข้อมูลขั้นสูง", "", null, "161.10"},
-                {null, "ระบบจัดการฐานข้อมูล (รหัสวิชา 3204-2004)", null, null, "144.00"}
+
             },
             new String [] {
-                "Check", "Book Name", "Author", "Translator", "Price"
+                "Check", "Book Name", "Author", "Translator", "Price", "Title 6"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -104,19 +122,21 @@ public class gui extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(loging)
-                .addGap(151, 151, 151)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(51, 51, 51))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(loging)
+                        .addGap(151, 151, 151)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(51, 51, 51))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +154,8 @@ public class gui extends javax.swing.JFrame {
                             .addComponent(loging)
                             .addComponent(jButton4))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jButton3.setText("Check out");
@@ -145,6 +166,11 @@ public class gui extends javax.swing.JFrame {
         });
 
         jButton2.setText("Add To Basket");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,8 +197,8 @@ public class gui extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    
+
+
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -189,15 +215,34 @@ public class gui extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-         
+
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+            boolean a = Boolean.valueOf(jTable1.getValueAt(i, 0).toString());
+                if(a){
+                    String book_id = jTable1.getValueAt(i, 1).toString();
+                    
+                    
+                    
+                    my.insertBasket(id,book_id);
+                    JOptionPane.showMessageDialog(null, book_id);
+                }
+            }   
+        }
+        catch (SQLException exc){
+            System.out.println("Err: " + exc);
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -227,8 +272,7 @@ public class gui extends javax.swing.JFrame {
                 new gui().setVisible(true);
             }
         });
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -239,6 +283,7 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel loging;

@@ -144,17 +144,14 @@ public class login extends javax.swing.JFrame {
                 String cuser = rs.getString("username");
                 String cpass = rs.getString("password");
                 String id = rs.getString("cus_id");
-                if(puser.isEmpty() || ppass.isEmpty()){
-                    
-                    if(cpass.compareTo(ppass) == 0){
+                if(cpass.compareTo(ppass) == 0){
                     cus_id = Integer.parseInt(id);
                     user = puser;
-                        this.setVisible(false);
-                        new gui().setVisible(true);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Password Wrong!");
-                    }
+                    this.setVisible(false);
+                    new gui().setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Password Wrong!");
                 }
             }
 

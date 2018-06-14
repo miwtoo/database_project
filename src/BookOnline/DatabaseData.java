@@ -7,14 +7,8 @@ import java.sql.Statement;
 public class DatabaseData {
     
     private Statement st;
-<<<<<<< HEAD
-    public DatabaseData() {
-        
-    }
-=======
     
 
->>>>>>> 1ae4b4675ff745e92ddb1c39c746db9e4dded682
     public DatabaseData(Statement st) {
         this.st = st;
     }
@@ -22,9 +16,7 @@ public class DatabaseData {
     public ResultSet getData(String str) {
         try {
             String query = "select * from KRITZER." + str;
-            System.out.println(query);
             ResultSet rs = st.executeQuery(query);
-            
             return rs;
         } catch (Exception e) {
             System.out.println("Error: " + e);
@@ -34,11 +26,7 @@ public class DatabaseData {
 
     public ResultSet getPassword(String str) {
         try {
-<<<<<<< HEAD
-            String query = "select * from KRITZER.account,KRITZER.customer  WHERE username = '"+str+"' AND account.cus_id = customer.cus_id";
-=======
-            String query = "select * from BOOK_ONLINE.account,BOOK_ONLINE.customer  WHERE username = '" + str + "' AND account.cus_id = customer.cus_id";
->>>>>>> 1ae4b4675ff745e92ddb1c39c746db9e4dded682
+            String query = "select * from KRITZER.account,KRITZER.customer  WHERE username = '" + str + "' AND account.cus_id = customer.cus_id";
             ResultSet rs = st.executeQuery(query);
             return rs;
         } catch (Exception e) {
@@ -48,7 +36,7 @@ public class DatabaseData {
     }
 
     public boolean deleteBookData(String id) throws SQLException {
-        boolean i = st.execute("DELETE FROM KRITZER.book WHERE book_id = " + id);
+        boolean i = st.execute("DELETE FROM BOOK_ONLINE.book WHERE book_id = " + id);
         return i;
     }
 

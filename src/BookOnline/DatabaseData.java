@@ -42,4 +42,40 @@ public class DatabaseData {
         if (i > -1) {return true;} 
         else {return false;} 
     }
+<<<<<<< HEAD
 }
+=======
+    public boolean updateStatus(int cid) throws SQLException {
+        int i = st.executeUpdate("update BOOK_ONLINE.basket set status = 'success' where cus_id = '"+cid+"'");
+        if (i > -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean insertBasket(int id, String bookid) throws SQLException { 
+        
+        int i = st.executeUpdate("insert into BOOK_ONLINE.basket values("+id+","+bookid+",'in process')"); 
+        if (i > -1) {return true;}
+        else {return false;}
+        
+    }
+    
+    
+    public ResultSet getBook() {
+        try {
+            String query = "select * from BOOK_ONLINE.VIEW_BOOKA";
+            ResultSet rs = st.executeQuery(query);
+            System.out.println(query);
+            return rs;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return null;
+        }
+    }
+
+    
+
+}
+
+>>>>>>> miw

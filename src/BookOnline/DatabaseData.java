@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseData {
-    static int cid = new login().cus_id;
     
     private Statement st;
     
@@ -41,7 +40,7 @@ public class DatabaseData {
         return i;
     }
 
-    public ResultSet getBasket() {
+    public ResultSet getBasket(int cid) {
         try {
             String query = "select * from BOOK_ONLINE.book, BOOK_ONLINE.basket WHERE book.book_id = basket.book_id and cus_id = '"+cid+"' and status = 'in process'";
             ResultSet rs = st.executeQuery(query);
@@ -53,7 +52,7 @@ public class DatabaseData {
         }
     }
     
-    public boolean updateStatus() throws SQLException {
+    public boolean updateStatus(int cid) throws SQLException {
         int i = st.executeUpdate("update BOOK_ONLINE.basket set status = 'success' where cus_id = '"+cid+"'");
         if (i > -1) {
             return true;

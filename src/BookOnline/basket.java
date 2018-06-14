@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Miwtoo-NB
  */
 public class basket extends javax.swing.JFrame {
-
+    static int cid = new login().cus_id;
     /**
      * Creates new form basket
      */
@@ -28,7 +28,7 @@ public class basket extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) basket.getModel();
 
             model.setRowCount(0);
-            ResultSet rs = my.getBasket();
+            ResultSet rs = my.getBasket(cid);
 
             while (rs.next()) {
                 String id = rs.getString("book_id");
@@ -143,7 +143,7 @@ public class basket extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null, "SUCCESE");
         try {
-            if (my.updateStatus()) {
+            if (my.updateStatus(cid)) {
 
             }
         }catch(Exception e){

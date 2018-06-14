@@ -38,13 +38,13 @@ public class DatabaseData {
         boolean i = st.execute("DELETE FROM BOOK_ONLINE.book WHERE book_id = " + id);
         return i;
     }
-     public boolean insertRegister(String id,String name, String add, String birth, String sex, String ccn, String cvv, String exp) throws SQLException {
+     public boolean insertRegister(String pass,String user, String add, String birth, String sex, String ccn, String cvv, String exp,String name) throws SQLException {
        
-       String q = "INSERT INTO BOOK_ONLINE.customer VALUES('" + name +"'," + id + ",'"+ add + "',to_date('"+ birth+ "','DDMMYY'),'"+ sex+"','" + ccn +"','"+ cvv + "',to_date('"+ exp+"','DDMMYY'))";
-       System.out.println(q);
+       String q ="INSERT ALL INTO BOOK_ONLINE.account VALUES('"+ user +"','"+ pass +"',BOOK_ONLINE.cus_seq.nextval ) INTO BOOK_ONLINE.customer VALUES( BOOK_ONLINE.cus_seq.nextval ,'"+ name +"','"+ add +"',to_date('"+ birth +"','DDMMYY'),'"+ sex +"',"+ ccn +","+ cvv +",to_date('"+ exp +"','DDMMYY'))  SELECT * FROM dual";
+         System.out.println(q);
          boolean i = st.execute(q);
          
-        //boolean j = st.execute("INSERT INTO BOOK_ONLINE.account VALUES (" + user + "," + pass + "null )" );
+   
         
         return i ;
    

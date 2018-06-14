@@ -38,7 +38,6 @@ public class DatabaseData {
         boolean i = st.execute("DELETE FROM BOOK_ONLINE.book WHERE book_id = " + id);
         return i;
     }
-<<<<<<< HEAD
     
     public boolean insertBookData(String id, String name) throws SQLException { 
 
@@ -78,8 +77,8 @@ public class DatabaseData {
 
     
 
-}
-=======
+
+
      public boolean insertRegister(String pass,String user, String add, String birth, String sex, String ccn, String cvv, String exp,String name) throws SQLException {
        
        String q ="INSERT ALL INTO BOOK_ONLINE.account VALUES('"+ user +"','"+ pass +"',BOOK_ONLINE.cus_seq.nextval ) INTO BOOK_ONLINE.customer VALUES( BOOK_ONLINE.cus_seq.nextval ,'"+ name +"','"+ add +"',to_date('"+ birth +"','DDMMYY'),'"+ sex +"',"+ ccn +","+ cvv +",to_date('"+ exp +"','DDMMYY'))  SELECT * FROM dual";
@@ -89,8 +88,6 @@ public class DatabaseData {
    
         
         return i ;
-   
-
+  
+       }
 }
-}
->>>>>>> pond-

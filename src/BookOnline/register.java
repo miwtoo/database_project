@@ -1,22 +1,24 @@
 package BookOnline;
 
+import static BookOnline.BookOnline.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Miwtoo-NB
  */
 public class register extends javax.swing.JFrame {
 
-    /**
-     * Creates new form register
-     */
     public register() {
         initComponents();
+
     }
 
     /**
@@ -149,7 +151,23 @@ public class register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String name = jTextField1.getText();
+        String id = jTextField2.getText();
+        String add  = jTextField3.getText();
+        String bd   = jTextField4.getText();
+        String sex  = jTextField5.getText();
+        String ccn  = jTextField6.getText();
+        String cvv  = jTextField7.getText();
+        String exp  = jTextField8.getText();
+        
+        try {
+            if (my.insertRegister( name , id , add, bd, sex, ccn, cvv, exp)) {
+               
+                
+            }
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

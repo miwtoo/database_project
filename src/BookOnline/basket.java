@@ -141,18 +141,19 @@ public class basket extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        JOptionPane.showMessageDialog(null, "SUCCESE");
+        
         try {
             if (my.updateStatus(cid)) {
-
+                JOptionPane.showMessageDialog(null, "SUCCESE");
+                
+                this.setVisible(false);
+                new gui().setVisible(true);
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
 
-        gui g = new gui();
-        this.setVisible(false);
-        g.setVisible(true);
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

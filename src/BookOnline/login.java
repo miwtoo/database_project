@@ -4,6 +4,7 @@ package BookOnline;
 import static BookOnline.BookOnline.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -17,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Miwtoo-NB
  */
 public class login extends javax.swing.JFrame {
-    static int cus_id;
+    static int cus_id = 0;
     static String user;
     /**
      * Creates new form login
@@ -127,34 +128,31 @@ public class login extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new admin().setVisible(true);
+        new admin_login().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String puser = username.getText();
+        String puser = username.getText(); 
         String ppass = password.getText();
         
         try{
             ResultSet rs = my.getPassword(puser);
             while(rs.next()){
+                String cuser = rs.getString("username");
                 String cpass = rs.getString("password");
                 String id = rs.getString("cus_id");
-                String permiss = rs.getString("permission");
-                
                 if(cpass.compareTo(ppass) == 0){
-                    cus_id = Integer.parseInt(id);
-                    user = puser;
-                    if(permiss.compareTo("1") == 0){
-                        this.setVisible(false);
-                        new admin().setVisible(true);
-                    }
-                    else{
-                        this.setVisible(false);
-                        new gui().setVisible(true);
-                    }
+                cus_id = Integer.parseInt(id);
+                user = puser;
+                    this.setVisible(false);
+                    new gui().setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Password Wrong!");
                 }
             }
+
         }
         catch (SQLException ex){
             System.out.println("Error: " + ex);

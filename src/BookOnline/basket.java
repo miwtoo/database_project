@@ -1,10 +1,11 @@
 package BookOnline;
 
-
+import javax.swing.JOptionPane;
 import static BookOnline.BookOnline.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,12 +17,33 @@ import javax.swing.table.DefaultTableModel;
  * @author Miwtoo-NB
  */
 public class basket extends javax.swing.JFrame {
-
+    static int cid = new login().cus_id;
     /**
      * Creates new form basket
      */
     public basket() {
         initComponents();
+        double sum = 0.0;
+        try {
+            DefaultTableModel model = (DefaultTableModel) basket.getModel();
+
+            model.setRowCount(0);
+            ResultSet rs = my.getBasket(cid);
+
+            while (rs.next()) {
+                String id = rs.getString("book_id");
+                String name = rs.getString("book_name");
+                String type = rs.getString("type");
+                String price = rs.getString("price_book");
+                String ISBN = rs.getString("ISBN");
+                model.addRow(new String[]{id, name, type, price, ISBN});
+                System.out.println(id + " " + name);
+                sum += Double.valueOf(price);
+            }
+            jLabel2.setText("" + sum);
+        } catch (Exception exc) {
+            System.out.println("Err: " + exc);
+        }
     }
 
     /**
@@ -35,7 +57,7 @@ public class basket extends javax.swing.JFrame {
 
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        basket = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -45,18 +67,30 @@ public class basket extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        basket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"เขียนโปรแกรมบนฐานข้อมูล MySQL", "สมพงษ์ อริสริยวงศ์", null, "161.10"},
-                {"การใช้โปรแกรมจัดการฐานข้อมูล Access 2007", "ฝ่ายตำราวิชาการคอมพิวเตอร์", null, "89.10"},
-                {"เจาะลึก Excel การใช้ PivotTable กับงานฐานข้อมูลขั้นสูงเจาะลึก Excel การใช้ PivotTable กับงานฐานข้อมูลขั้นสูง", "", null, "161.10"},
-                {"ระบบจัดการฐานข้อมูล (รหัสวิชา 3204-2004)", null, null, "144.00"}
+
             },
             new String [] {
-                "Book Name", "Author", "Translator", "Price"
+                "Book_id", "Book _name", "Type", "Price_book", "ISBN"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(basket);
+        if (basket.getColumnModel().getColumnCount() > 0) {
+            basket.getColumnModel().getColumn(0).setResizable(false);
+            basket.getColumnModel().getColumn(1).setResizable(false);
+            basket.getColumnModel().getColumn(2).setResizable(false);
+            basket.getColumnModel().getColumn(3).setResizable(false);
+            basket.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jButton1.setText("Purchase");
@@ -76,7 +110,6 @@ public class basket extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(393, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -85,13 +118,17 @@ public class basket extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(73, 73, 73))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jLabel2)
@@ -103,7 +140,21 @@ public class basket extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+        
+        try {
+            if (my.updateStatus(cid)) {
+                JOptionPane.showMessageDialog(null, "SUCCESE");
+                
+                this.setVisible(false);
+                new gui().setVisible(true);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -142,11 +193,11 @@ public class basket extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable basket;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

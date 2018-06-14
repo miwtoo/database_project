@@ -225,8 +225,6 @@ public class gui extends javax.swing.JFrame {
                 if(a){
                     String book_id = jTable1.getValueAt(i, 1).toString();
                     
-                    
-                    
                     my.insertBasket(id,book_id);
                     JOptionPane.showMessageDialog(null, book_id);
                 }

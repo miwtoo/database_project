@@ -3,6 +3,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/DatabaseData.java</file>
             <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/admin.java</file>
             <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/basket.java</file>
@@ -19,6 +20,11 @@
             <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/BookOnline.java</file>
             <file>file:/C:/Users/User/Documents/GitHub/database_project/src/BookOnline/history.java</file>
 >>>>>>> parent of b4f0572... Merge branch 'master' of https://github.com/miwtoo/database_project
+=======
+            <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/DatabaseData.java</file>
+            <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/admin.java</file>
+            <file>file:/C:/Users/Miwtoo-NB/Documents/GitHub/database_project/src/BookOnline/gui.java</file>
+>>>>>>> parent of 13cd82a... FF
         </group>
     </open-files>
 </project-private>

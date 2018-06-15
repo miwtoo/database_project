@@ -3,6 +3,7 @@ package BookOnline;
 import static BookOnline.BookOnline.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -42,7 +43,9 @@ public class gui extends javax.swing.JFrame {
                 String pubname = rs.getString("PUB_NAME");
                 model.addRow(new String[]{null,id,name, wri_name, tran , price,pubname});
             }
-        } catch (Exception exc) {
+        }
+       
+        catch (Exception exc) {
             System.out.println("Err: " + exc);
         }
         
@@ -223,10 +226,10 @@ public class gui extends javax.swing.JFrame {
             for (int i = 0; i < jTable1.getRowCount(); i++) {
             boolean a = Boolean.valueOf(jTable1.getValueAt(i, 0).toString());
                 if(a){
-                    String book_id = jTable1.getValueAt(i, 1).toString();
+                    int book_id = Integer.valueOf(jTable1.getValueAt(i, 1).toString());
                     
-                    my.insertBasket(id,book_id);
-                    JOptionPane.showMessageDialog(null, book_id);
+                        my.insertBasket(id,book_id);
+                        JOptionPane.showMessageDialog(null, book_id);
                 }
             }   
         }

@@ -2,6 +2,7 @@ package BookOnline;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 public class DatabaseData {
@@ -67,18 +68,19 @@ public class DatabaseData {
             return false;
         }
     }
-    public boolean insertBasket(int id, String bookid) throws SQLException { 
-        
-        int i = st.executeUpdate("insert into BOOK_ONLINE.basket values("+id+","+bookid+",'in process')"); 
+    public boolean insertBasket(int id, int bookid) throws SQLException { 
+        String q = "insert into BOOK_ONLINE.basket values("+id+","+bookid+",'in process')";
+        System.out.println(q);
+        int i = st.executeUpdate(q); 
         if (i > -1) {return true;}
         else {return false;}
         
     }
     
     
-    public ResultSet getBook() {
+    public ResultSet getBook() throws SQLIntegrityConstraintViolationException{
         try {
-            String query = "select * from BOOK_ONLINE.VIEW_BOOKA";
+            String query = "select * from BOOK_ONLINE.view_booka";
             ResultSet rs = st.executeQuery(query);
             System.out.println(query);
             return rs;

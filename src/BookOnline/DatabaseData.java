@@ -69,6 +69,7 @@ public class DatabaseData {
     }
     public boolean insertBasket(int id, int bookid) throws SQLException { 
         String q = "insert into BOOK_ONLINE.basket values("+id+","+bookid+",'in process')";
+        System.out.println(q);
         int i = st.executeUpdate(q); 
         if (i > -1) {return true;}
         else {return false;}
@@ -116,9 +117,9 @@ public class DatabaseData {
         }
     }
     
-    public boolean insertRegister(String pass,String user, String add, String birth, String sex, String ccn, String cvv, String exp,String name) throws SQLException {
+    public boolean insertRegister(String user, String pass, String add, String birth, String sex, String ccn, String cvv, String exp,String name) throws SQLException {
        
-       String q ="INSERT ALL INTO BOOK_ONLINE.account VALUES('"+ user +"','"+ pass +"',BOOK_ONLINE.cus_seq.nextval ) INTO BOOK_ONLINE.customer VALUES( BOOK_ONLINE.cus_seq.nextval ,'"+ name +"','"+ add +"',to_date('"+ birth +"','DDMMYY'),'"+ sex +"',"+ ccn +","+ cvv +",to_date('"+ exp +"','DDMMYY'))  SELECT * FROM dual";
+       String q ="INSERT ALL INTO BOOK_ONLINE.customer VALUES( BOOK_ONLINE.cus_seq.nextval ,'"+ name +"','"+ add +"',to_date('"+ birth +"','DDMMYY'),'"+ sex +"',"+ ccn +","+ cvv +",to_date('"+ exp +"','DDMMYY'),0) INTO BOOK_ONLINE.account VALUES('"+ user +"','"+ pass +"',BOOK_ONLINE.cus_seq.nextval ) SELECT * FROM dual";
          System.out.println(q);
          boolean i = st.execute(q);
          

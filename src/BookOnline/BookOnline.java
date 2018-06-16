@@ -1,9 +1,6 @@
 
 package BookOnline;
 
-import javax.swing.table.DefaultTableModel;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class BookOnline {
     static DatabaseConnection db = new DatabaseConnection();
@@ -12,5 +9,15 @@ public class BookOnline {
         db.connectDB();
         my = new DatabaseData(db.getSt());
         new login().setVisible(true);
+    }
+    public static boolean StringToBoolean (Object ob){
+        try{
+            ob.toString();
+        }
+        catch(NullPointerException exc){
+            return false;
+            
+        }
+        return true;
     }
 }

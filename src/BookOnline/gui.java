@@ -210,7 +210,7 @@ public class gui extends javax.swing.JFrame {
                 String tran = rs.getString("TRANSLATER");
                 String price = rs.getString("PRICE_BOOK");
                 String pubname = rs.getString("PUB_NAME");
-                model.addRow(new String[]{null,id,name, wri_name, tran , price,pubname});
+                model.addRow(new String[]{ null ,id,name, wri_name, tran , price,pubname});
             }
         }
        
@@ -233,20 +233,23 @@ public class gui extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try{
             for (int i = 0; i < jTable1.getRowCount(); i++) {
-            boolean a = Boolean.valueOf(jTable1.getValueAt(i, 0).toString());
-                if(a){
-                    int book_id = Integer.valueOf(jTable1.getValueAt(i, 1).toString());
-                    
-                        my.insertBasket(id,book_id);
-                        JOptionPane.showMessageDialog(null, book_id);
-                }
+            
+            boolean chk = StringToBoolean(jTable1.getValueAt(i, 0));
+            
+            if(chk){
+                int book_id = Integer.valueOf(jTable1.getValueAt(i, 1).toString());
+                    if(my.insertBasket(id,book_id)){
+                        JOptionPane.showMessageDialog(null, jTable1.getValueAt(i, 2).toString() + "เข้าตะกร้าแล้ว");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, jTable1.getValueAt(i, 2).toString() + "ไม่สำเร็จ");
+                    }
+
+            }
             }   
         }
         catch(SQLIntegrityConstraintViolationException exc){
-            JOptionPane.showMessageDialog(null, "คุณจ่ายเงินแล้ว " + exc);
-        }
-        catch(NullPointerException exc){
-            JOptionPane.showMessageDialog(null, "Err Null: " + exc);
+            JOptionPane.showMessageDialog(null, "อยู่ในตะกร้าแล้ว " + exc);
         }
         catch (Exception exc){
             System.out.println("Err: " + exc);

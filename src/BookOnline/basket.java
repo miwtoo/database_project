@@ -208,7 +208,7 @@ public class basket extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             for (int i = 0; i < basket.getRowCount(); i++) {
-            boolean a = Boolean.valueOf(basket.getValueAt(i, 0).toString());
+            boolean a = StringToBoolean(basket.getValueAt(i, 0));
                 if(a){
                     int book_id = Integer.valueOf(basket.getValueAt(i, 1).toString());
                     

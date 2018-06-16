@@ -22,6 +22,30 @@ public class basket extends javax.swing.JFrame {
      */
     public basket() {
         initComponents();
+<<<<<<< HEAD
+=======
+        double sum = 0.0;
+        try {
+            DefaultTableModel model = (DefaultTableModel) basket.getModel();
+
+            model.setRowCount(0);
+            ResultSet rs = my.getBasket(cid);
+
+            while (rs.next()) {
+                String id = rs.getString("book_id");
+                String name = rs.getString("book_name");
+                String type = rs.getString("type");
+                String price = rs.getString("price_book");
+                String ISBN = rs.getString("ISBN");
+                model.addRow(new String[]{null ,id, name, type, price, ISBN});
+                System.out.println(id + " " + name);
+                sum += Double.valueOf(price);
+            }
+            jLabel2.setText("" + sum);
+        } catch (Exception exc) {
+            System.out.println("Err: " + exc);
+        }
+>>>>>>> miw
     }
 
     /**
@@ -39,6 +63,8 @@ public class basket extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -53,10 +79,39 @@ public class basket extends javax.swing.JFrame {
                 {"ระบบจัดการฐานข้อมูล (รหัสวิชา 3204-2004)", null, null, "144.00"}
             },
             new String [] {
+<<<<<<< HEAD
                 "Book Name", "Author", "Translator", "Price"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+=======
+                "Title 1", "Book_id", "Book _name", "Type", "Price_book", "ISBN"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(basket);
+        if (basket.getColumnModel().getColumnCount() > 0) {
+            basket.getColumnModel().getColumn(0).setResizable(false);
+            basket.getColumnModel().getColumn(1).setResizable(false);
+            basket.getColumnModel().getColumn(2).setResizable(false);
+            basket.getColumnModel().getColumn(3).setResizable(false);
+            basket.getColumnModel().getColumn(4).setResizable(false);
+        }
+>>>>>>> miw
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jButton1.setText("Purchase");
@@ -72,10 +127,25 @@ public class basket extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("555.3");
 
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        Delete.setText("Delete Basket");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(393, Short.MAX_VALUE)
@@ -85,18 +155,54 @@ public class basket extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(73, 73, 73))
+=======
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(Delete)
+                                .addGap(370, 370, 370)
+                                .addComponent(jButton2)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(146, 146, 146)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addGap(79, 79, 79))))))
+>>>>>>> miw
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addGap(18, 18, 18)
+=======
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(14, 14, 14))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)))
+>>>>>>> miw
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(Delete))
+                .addContainerGap())
         );
 
         pack();
@@ -105,6 +211,34 @@ public class basket extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new gui().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        // TODO add your handling code here:
+        try{
+            for (int i = 0; i < basket.getRowCount(); i++) {
+            boolean a = Boolean.valueOf(basket.getValueAt(i, 0).toString());
+                if(a){
+                    int book_id = Integer.valueOf(basket.getValueAt(i, 1).toString());
+                    
+                        my.DelBasket(cid,book_id);
+                        JOptionPane.showMessageDialog(null, book_id);
+                }
+            }   
+        }
+        catch (NullPointerException ex){
+            System.out.println(ex);
+        }
+        catch (Exception exc){
+            System.out.println("Err: " + exc);
+            JOptionPane.showMessageDialog(null, "Err: " + exc);
+        }
+    }//GEN-LAST:event_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,7 +276,13 @@ public class basket extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+=======
+    private javax.swing.JButton Delete;
+    private javax.swing.JTable basket;
+>>>>>>> miw
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;

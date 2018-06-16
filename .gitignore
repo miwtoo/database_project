@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 # Created by https://www.gitignore.io/api/java
 
 ### Java ###
+=======
+>>>>>>> miw
 # Compiled class file
 *.class
 
@@ -16,6 +19,10 @@
 # Package Files #
 *.jar
 *.war
+<<<<<<< HEAD
+=======
+*.nar
+>>>>>>> miw
 *.ear
 *.zip
 *.tar.gz
@@ -23,8 +30,12 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
 
 
 # End of https://www.gitignore.io/api/java
 *.properties
 *.jar
+=======
+*.properties
+>>>>>>> miw

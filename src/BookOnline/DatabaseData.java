@@ -2,11 +2,18 @@ package BookOnline;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 public class DatabaseData {
+<<<<<<< HEAD
 
     private Statement st;
+=======
+    
+    private Statement st;
+    
+>>>>>>> miw
 
     public DatabaseData(Statement st) {
         this.st = st;
@@ -38,6 +45,20 @@ public class DatabaseData {
         boolean i = st.execute("DELETE FROM BOOK_ONLINE.book WHERE book_id = " + id);
         return i;
     }
+<<<<<<< HEAD
+=======
+
+    public ResultSet getBasket(int cid) {
+        try {
+            String query = "select * from BOOK_ONLINE.book, BOOK_ONLINE.basket WHERE book.book_id = basket.book_id and cus_id = '"+cid+"' and status = 'in process'";
+            ResultSet rs = st.executeQuery(query);
+            return rs;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return null;
+        }
+    }
+>>>>>>> miw
     
     public boolean insertBookData(String id, String name) throws SQLException { 
 
@@ -54,20 +75,37 @@ public class DatabaseData {
             return false;
         }
     }
-    public boolean insertBasket(int id, String bookid) throws SQLException { 
-        
-        int i = st.executeUpdate("insert into BOOK_ONLINE.basket values("+id+","+bookid+",'in process')"); 
+    public boolean insertBasket(int id, int bookid) throws SQLException { 
+        String q = "insert into BOOK_ONLINE.basket values("+id+","+bookid+",'in process')";
+        int i = st.executeUpdate(q); 
         if (i > -1) {return true;}
         else {return false;}
         
     }
     
+    public boolean DelBasket(int id, int bookid) throws SQLException { 
+        String q = "delete from BOOK_ONLINE.basket WHERE cus_id = "+id+" AND book_id = "+bookid+" AND status = 'in process'";
+        int i = st.executeUpdate(q); 
+        if (i > -1) {return true;}
+        else {return false;}
+        
+    }
     
-    public ResultSet getBook() {
+    public ResultSet getBook(){
         try {
-            String query = "select * from BOOK_ONLINE.VIEW_BOOKA";
+            String query = "select * from BOOK_ONLINE.view_booka";
             ResultSet rs = st.executeQuery(query);
-            System.out.println(query);
+            return rs;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return null;
+        }
+    }
+    
+    public ResultSet getBookByName(String name){
+        try {
+            String query = "select * from BOOK_ONLINE.view_booka where book_name LIKE '%"+name+"%'";
+            ResultSet rs = st.executeQuery(query);
             return rs;
         } catch (Exception e) {
             System.out.println("Error: " + e);
@@ -75,9 +113,19 @@ public class DatabaseData {
         }
     }
 
-    
+    public ResultSet getHistory(int cid){
+        try {
+            String query = "SELECT customer.cus_id, book.book_id ,book_name , status FROM BOOK_ONLINE.book,BOOK_ONLINE.basket,BOOK_ONLINE.customer WHERE book.book_id = basket.book_id AND customer.cus_id = basket.cus_id AND customer.cus_id = "+cid+" AND status = 'success'";
+            ResultSet rs = st.executeQuery(query);
+            return rs;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return null;
+        }
+    }
 
 
+<<<<<<< HEAD
 
      public boolean insertRegister(String pass,String user, String add, String birth, String sex, String ccn, String cvv, String exp,String name) throws SQLException {
        
@@ -91,3 +139,5 @@ public class DatabaseData {
   
        }
 }
+=======
+>>>>>>> miw

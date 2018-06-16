@@ -6,14 +6,8 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 public class DatabaseData {
-<<<<<<< HEAD
 
     private Statement st;
-=======
-    
-    private Statement st;
-    
->>>>>>> miw
 
     public DatabaseData(Statement st) {
         this.st = st;
@@ -45,8 +39,6 @@ public class DatabaseData {
         boolean i = st.execute("DELETE FROM BOOK_ONLINE.book WHERE book_id = " + id);
         return i;
     }
-<<<<<<< HEAD
-=======
 
     public ResultSet getBasket(int cid) {
         try {
@@ -58,7 +50,6 @@ public class DatabaseData {
             return null;
         }
     }
->>>>>>> miw
     
     public boolean insertBookData(String id, String name) throws SQLException { 
 
@@ -125,8 +116,6 @@ public class DatabaseData {
     }
 
 
-<<<<<<< HEAD
-
      public boolean insertRegister(String pass,String user, String add, String birth, String sex, String ccn, String cvv, String exp,String name) throws SQLException {
        
        String q ="INSERT ALL INTO BOOK_ONLINE.account VALUES('"+ user +"','"+ pass +"',BOOK_ONLINE.cus_seq.nextval ) INTO BOOK_ONLINE.customer VALUES( BOOK_ONLINE.cus_seq.nextval ,'"+ name +"','"+ add +"',to_date('"+ birth +"','DDMMYY'),'"+ sex +"',"+ ccn +","+ cvv +",to_date('"+ exp +"','DDMMYY'))  SELECT * FROM dual";
@@ -139,5 +128,3 @@ public class DatabaseData {
   
        }
 }
-=======
->>>>>>> miw

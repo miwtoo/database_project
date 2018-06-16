@@ -45,7 +45,6 @@ public class DatabaseData {
         try {
             String query = "select * from BOOK_ONLINE.book, BOOK_ONLINE.basket WHERE book.book_id = basket.book_id and cus_id = '"+cid+"' and status = 'in process'";
             ResultSet rs = st.executeQuery(query);
-            System.out.println(query);
             return rs;
         } catch (Exception e) {
             System.out.println("Error: " + e);
@@ -70,19 +69,35 @@ public class DatabaseData {
     }
     public boolean insertBasket(int id, int bookid) throws SQLException { 
         String q = "insert into BOOK_ONLINE.basket values("+id+","+bookid+",'in process')";
-        System.out.println(q);
         int i = st.executeUpdate(q); 
         if (i > -1) {return true;}
         else {return false;}
         
     }
     
+    public boolean DelBasket(int id, int bookid) throws SQLException { 
+        String q = "delete from BOOK_ONLINE.basket WHERE cus_id = "+id+" AND book_id = "+bookid+" AND status = 'in process'";
+        int i = st.executeUpdate(q); 
+        if (i > -1) {return true;}
+        else {return false;}
+        
+    }
     
-    public ResultSet getBook() throws SQLIntegrityConstraintViolationException{
+    public ResultSet getBook(){
         try {
             String query = "select * from BOOK_ONLINE.view_booka";
             ResultSet rs = st.executeQuery(query);
-            System.out.println(query);
+            return rs;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return null;
+        }
+    }
+    
+    public ResultSet getBookByName(String name){
+        try {
+            String query = "select * from BOOK_ONLINE.view_booka where book_name LIKE '%"+name+"%'";
+            ResultSet rs = st.executeQuery(query);
             return rs;
         } catch (Exception e) {
             System.out.println("Error: " + e);
@@ -90,7 +105,16 @@ public class DatabaseData {
         }
     }
 
-    
+    public ResultSet getHistory(int cid){
+        try {
+            String query = "SELECT customer.cus_id, book.book_id ,book_name , status FROM BOOK_ONLINE.book,BOOK_ONLINE.basket,BOOK_ONLINE.customer WHERE book.book_id = basket.book_id AND customer.cus_id = basket.cus_id AND customer.cus_id = "+cid+" AND status = 'success'";
+            ResultSet rs = st.executeQuery(query);
+            return rs;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return null;
+        }
+    }
 
 }
 

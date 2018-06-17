@@ -7,7 +7,7 @@ CREATE TABLE customer(
     creditcard      number          not null,
     cvv             number          not null,
     exp             date            not null,
-    PERMISSION      number          null,
+    PERMISSION      number          not null,
 PRIMARY KEY(cus_id)
 );
 
@@ -19,9 +19,9 @@ CREATE TABLE account(
 );
 CREATE TABLE book(
     book_id	        number          not null,
-    book_name       varchar(300)    not null,
-    type            varchar(50)     not null,
-    price_book      number          not null,
+    book_name       varchar(300)    null,
+    type            varchar(100)    null,
+    price_book      number          null,
     isbn            number          null,
     PRIMARY KEY (book_id)
 );
@@ -38,37 +38,26 @@ CREATE TABLE BASKET(
     Book_id         number          not null,
     status          varchar(20)     null,
     PRIMARY KEY(cus_id,book_id),
-    FOREIGN KEY (book_id) REFERENCES BOOK(book_id),
+    FOREIGN KEY (book_id) REFERENCES BOOK(book_id) ON DELETE CASCADE,
     FOREIGN KEY (cus_id) REFERENCES customer(cus_id)
 );
-
-
 
 CREATE TABLE Publisher(
     Pub_id          number          PRIMARY KEY,
-    Pub_address     varchar2(100)   not null,
+    Pub_address     varchar2(100)   null,
     Pub_name        varchar2(100)   not null,
     Book_id         number          not null,
-    FOREIGN KEY (book_id) REFERENCES BOOK(book_id)
-);
-
-create table buy(
-    cus_id          number          not null,
-    book_id	        number          not null,
-    PRIMARY KEY(id,book_id),
-    FOREIGN KEY (book_id) REFERENCES book(book_id),
-    FOREIGN KEY (cus_id) REFERENCES customer(cus_id)
+    FOREIGN KEY (book_id) REFERENCES BOOK(book_id) ON DELETE CASCADE
 );
 
 create table write(
     writer_id       number          not null,
     book_id	        number          not null,
     PRIMARY KEY(writer_id,book_id),
-    FOREIGN KEY (book_id) REFERENCES book(book_id),
-    FOREIGN KEY (writer_id) REFERENCES writer(writer_id)
+    FOREIGN KEY (book_id) REFERENCES book(book_id) ON DELETE CASCADE,
+    FOREIGN KEY (writer_id) REFERENCES writer(writer_id) ON DELETE CASCADE
 );
 
 create sequence cus_seq;
 create sequence book_seq;
-create sequence pub_seq;
 create sequence write_seq;

@@ -19,7 +19,7 @@ CREATE TABLE account(
 );
 CREATE TABLE book(
     book_id	        number          not null,
-    book_name       varchar(100)    not null,
+    book_name       varchar(300)    not null,
     type            varchar(50)     not null,
     price_book      number          not null,
     isbn            number          null,

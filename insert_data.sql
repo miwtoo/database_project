@@ -14,13 +14,22 @@ INSERT INTO writer VALUES(2 , 'ุฑาธิป พึ่งละออ' , nu
 INSERT INTO writer VALUES(3 , 'Pensri Kiengsiri' , null , null);
 INSERT INTO writer VALUES(4 , 'Ha-Hyun' , 'Hyunmeen' , null);
 INSERT INTO writer VALUES(5 , 'นิตยสารเกมออนไลน์' , null , null);
-
+INSERT INTO writer VALUES(6 , 'Lothar Seiwert (โลทาร์ ไซแวร์ท)' , 'ปิยะกัลย์ สินประเสริฐ' , null);
+INSERT INTO writer VALUES(7 , 'ทศภาคย์ เผ่าไทนนท์' , null , null);
+INSERT INTO writer VALUES(8 , 'ทีม Pilot Talk Thailand' , null , null);
+INSERT INTO writer VALUES(9 , 'นคร เสรีรักษ์,ภรณี ดีราษฎร์วิเศษ, null , null);
+INSERT INTO writer VALUES(10 , 'ผศ.ดร. ณรงค์ โพธิพฤกษานันท์' , null , null);
 
 INSERT INTO Publisher VALUES(1,'Bangkok','springbooks',1);
 INSERT INTO Publisher VALUES(2,'Bangkok','อิสญะ ตระกูลพุทธรักษา',2);
 INSERT INTO Publisher VALUES(3,'Seoul','Woman publisher',3);
 INSERT INTO Publisher VALUES(4,'Bangkok','แจ่มใส, สนพ.',4);
 INSERT INTO Publisher VALUES(5,'Bangkok','ทรู มีเดีย โซลูชั่นส์, บจก.',5);
+INSERT INTO Publisher VALUES(6,'Bangkok','บี มีเดีย, สนพ.',6);
+INSERT INTO Publisher VALUES(7,'Bangkok','อีเทอร์นิตี้ไอเดีย 168, บจก.',7);
+INSERT INTO Publisher VALUES(8,'Bangkok','ซีเอ็ดยูเคชั่น, บมจ.',8);
+INSERT INTO Publisher VALUES(9,'Bangkok','ธรรมศาสตร์, สนพ. ม.',9);
+INSERT INTO Publisher VALUES(10,'Bangkok','เอ็กซเปอร์เน็ท, บจก.',10);
 
 INSERT INTO customer VALUES (1,'m','a',to_date('010101','MMDDYY'),'aaaa',to_date('020908','MMDDYY'),0);
 INSERT INTO customer VALUES (2,'m','b',to_date('020304','MMDDYY'),'bbbb',to_date('030908','MMDDYY'),1);
@@ -39,7 +48,11 @@ INSERT INTO write VALUES(2,2);
 INSERT INTO write VALUES(3,3);
 INSERT INTO write VALUES(4,4);
 INSERT INTO write VALUES(5,5);
-
+INSERT INTO write VALUES(6,6);
+INSERT INTO write VALUES(7,7);
+INSERT INTO write VALUES(8,8);
+INSERT INTO write VALUES(9,9);
+INSERT INTO write VALUES(10,10);
 
 insert into basket values(1,1,'in process');
 insert into basket values(1,2,'in process');

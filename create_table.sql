@@ -69,3 +69,6 @@ create table write(
 );
 
 create sequence cus_seq;
+create sequence book_seq;
+create sequence pub_seq;
+create sequence write_seq;

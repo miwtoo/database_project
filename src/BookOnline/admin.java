@@ -326,8 +326,8 @@ public class admin extends javax.swing.JFrame {
                 }
             }
         } catch (Exception ex) {
-            //System.out.println("Error: " + ex);
-            JOptionPane.showMessageDialog(null,"Error: " + ex);
+            System.out.println("Error: " + ex);
+            //JOptionPane.showMessageDialog(null,"Error: " + ex);
             
         }
         
@@ -378,8 +378,8 @@ public class admin extends javax.swing.JFrame {
             my.insertBookData(bookname,booktype,price,isbn, writename, tranname, componame, pubadd,pubname);
             JOptionPane.showMessageDialog(null, "SUCCESE");
         } catch (Exception ex) {
-            //System.out.println("Error: " + ex);
-            JOptionPane.showMessageDialog(null,"Error: " + ex);
+            System.out.println("Error: " + ex);
+            //JOptionPane.showMessageDialog(null,"Error: " + ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -226,7 +226,7 @@ public class basket extends javax.swing.JFrame {
         }
         catch (Exception exc){
             System.out.println("Err: " + exc);
-            JOptionPane.showMessageDialog(null, "Err: " + exc);
+            //JOptionPane.showMessageDialog(null, "Err: " + exc);
         }
     }//GEN-LAST:event_DeleteActionPerformed
 

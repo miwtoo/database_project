@@ -20,4 +20,10 @@ public class BookOnline {
         }
         return true;
     }
+    public static String convertDate(String st){
+        //2018-06-17
+        String[] arr = st.split("-");
+        
+        return arr[2] + arr[1] + arr[0].substring(2);
+    }
 }

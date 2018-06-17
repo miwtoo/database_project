@@ -1,10 +1,12 @@
 CREATE TABLE customer(
     cus_id          number          not null,
-    Sex             char(1)         not null,
     Cus_name        varchar2(30)    not null,
-    BirthDay        date            not null,
-    cus_Address     varchar2(30)    not null,
-    date_register   date            not null,
+    cus_Address     varchar2(30)    null,
+    BirthDay        date            null,
+    Sex             char(1)         not null,
+    creditcard      number          not null,
+    cvv             number          not null,
+    exp             date            not null,
     PERMISSION      number          null,
 PRIMARY KEY(cus_id)
 );
@@ -67,12 +69,3 @@ create table write(
 );
 
 create sequence cus_seq;
-
-create on repleace triger before_cus_insert
-before insert on customer
-when (NEW.cus_id IS NULL)
-begin
-    SELECT cus_seq.NEXTVAL
-    INTO :NEW.cus_id
-    FROM DUAL;
-END;

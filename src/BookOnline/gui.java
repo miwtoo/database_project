@@ -27,12 +27,16 @@ public class gui extends javax.swing.JFrame {
      */
     public gui() {
         initComponents();
-        loging.setText("Welcome : " + user);
+        loging.setText("Welcome : " + user);  
+        myTable();
+    }
+    public void myTable(){
         try {
+            String findName = jTextField1.getText();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
             model.setRowCount(0);
-            ResultSet rs = my.getBook();
+            ResultSet rs = my.getBook(findName,id);
 
             while (rs.next()) {
                 String id = rs.getString("book_id");
@@ -41,14 +45,13 @@ public class gui extends javax.swing.JFrame {
                 String tran = rs.getString("TRANSLATER");
                 String price = rs.getString("PRICE_BOOK");
                 String pubname = rs.getString("PUB_NAME");
-                model.addRow(new String[]{null,id,name, wri_name, tran , price,pubname});
+                model.addRow(new String[]{ null ,id,name, wri_name, tran , price,pubname});
             }
         }
        
         catch (Exception exc) {
             System.out.println("Err: " + exc);
         }
-        
     }
 
     /**
@@ -97,7 +100,16 @@ public class gui extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.setRowSelectionAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Check");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Book ID");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Book Name");
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Author");
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("Translator");
+            jTable1.getColumnModel().getColumn(5).setHeaderValue("Price");
+        }
 
         jButton4.setText("History");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -183,8 +195,8 @@ public class gui extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -196,27 +208,7 @@ public class gui extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-            String findName = jTextField1.getText();
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
-            model.setRowCount(0);
-            ResultSet rs = my.getBookByName(findName);
-
-            while (rs.next()) {
-                String id = rs.getString("book_id");
-                String name = rs.getString("book_name");
-                String wri_name = rs.getString("WRITER_NAME");
-                String tran = rs.getString("TRANSLATER");
-                String price = rs.getString("PRICE_BOOK");
-                String pubname = rs.getString("PUB_NAME");
-                model.addRow(new String[]{ null ,id,name, wri_name, tran , price,pubname});
-            }
-        }
-       
-        catch (Exception exc) {
-            System.out.println("Err: " + exc);
-        }
+        myTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -232,24 +224,20 @@ public class gui extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try{
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             for (int i = 0; i < jTable1.getRowCount(); i++) {
-            
-            boolean chk = StringToBoolean(jTable1.getValueAt(i, 0));
-            
-            if(chk){
-                int book_id = Integer.valueOf(jTable1.getValueAt(i, 1).toString());
-                    if(my.insertBasket(id,book_id)){
-                        JOptionPane.showMessageDialog(null, jTable1.getValueAt(i, 2).toString() + "เข้าตะกร้าแล้ว");
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, jTable1.getValueAt(i, 2).toString() + "ไม่สำเร็จ");
-                    }
-
-            }
+                boolean chk = StringToBoolean(jTable1.getValueAt(i, 0));
+                System.out.println("check "+i+" = "+chk);
+                if(chk){
+                    int book_id = Integer.valueOf(jTable1.getValueAt(i, 1).toString());
+                    my.insertBasket(id,book_id);
+                    //JOptionPane.showMessageDialog(null,"คุณได้เพิ่ม  '" + jTable1.getValueAt(i, 2).toString() + "'  เข้าตะกร้าแล้ว");
+                    model.removeRow(i);
+                }
             }   
         }
-        catch(SQLIntegrityConstraintViolationException exc){
-            JOptionPane.showMessageDialog(null, "อยู่ในตะกร้าแล้ว " + exc);
+        catch(SQLIntegrityConstraintViolationException ex){
+            System.out.println("Err: " + ex);
         }
         catch (Exception exc){
             System.out.println("Err: " + exc);

@@ -70,9 +70,8 @@ public class DatabaseData {
     public boolean insertBasket(int id, int bookid) throws SQLException { 
         String q = "insert into BOOK_ONLINE.basket values("+id+","+bookid+",'in process')";
         System.out.println(q);
-        int i = st.executeUpdate(q); 
-        if (i > -1) {return true;}
-        else {return false;}
+        boolean i = st.execute(q);
+        return i;
         
     }
     
@@ -84,9 +83,11 @@ public class DatabaseData {
         
     }
     
-    public ResultSet getBook(){
+    public ResultSet getBook(String name,int id){
         try {
-            String query = "select * from BOOK_ONLINE.view_booka";
+            String query = "select book.book_id,book.book_name,publisher.pub_name,writer.writer_name,writer.translater,book.isbn,book.price_book "
+                    + "from BOOK_ONLINE.book,BOOK_ONLINE.write,BOOK_ONLINE.writer,BOOK_ONLINE.publisher "
+                    + "where book.book_id = publisher.book_id and book.book_id = write.book_id and book.book_id = publisher.book_id and write.writer_id = writer.writer_id and book_name LIKE '%"+name+"%'";
             ResultSet rs = st.executeQuery(query);
             return rs;
         } catch (Exception e) {

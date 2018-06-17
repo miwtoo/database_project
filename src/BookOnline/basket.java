@@ -23,6 +23,10 @@ public class basket extends javax.swing.JFrame {
      */
     public basket() {
         initComponents();
+        myTable();
+        
+    }
+    public void myTable(){
         double sum = 0.0;
         try {
             DefaultTableModel model = (DefaultTableModel) basket.getModel();
@@ -211,11 +215,11 @@ public class basket extends javax.swing.JFrame {
             boolean a = StringToBoolean(basket.getValueAt(i, 0));
                 if(a){
                     int book_id = Integer.valueOf(basket.getValueAt(i, 1).toString());
-                    
-                        my.DelBasket(cid,book_id);
-                        JOptionPane.showMessageDialog(null, book_id);
+                    my.DelBasket(cid,book_id);
+                    JOptionPane.showMessageDialog(null, basket.getValueAt(i, 2) + " ถูกลบแล้ว");
                 }
-            }   
+            }
+            myTable();
         }
         catch (NullPointerException ex){
             System.out.println(ex);

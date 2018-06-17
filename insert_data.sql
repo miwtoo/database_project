@@ -1,8 +1,13 @@
-INSERT INTO book VALUES(1,'นาซ่าก็พาเธอกลับมาไม่ได้', 'ทั่วไป', 185.25, 9786161823269 );
+﻿INSERT INTO book VALUES(1,'นาซ่าก็พาเธอกลับมาไม่ได้', 'ทั่วไป', 185.25, 9786161823269 );
 INSERT INTO book VALUES(2, 'New English Grammar & Vocabulary Book 2', 'การศึกษา', 160.55,  9789744329707);
 INSERT INTO book VALUES(3, 'The Sky So Near', 'วรรณกรรม', 560.50,  9786165101325 );
 INSERT INTO book VALUES(4, 'A Piece of the Moon', 'วรรณกรรม', 284.05, 9786160621989);
 INSERT INTO book VALUES(5, 'OS Online Station No.683', 'นิตยสาร', 28.05, 9772032683001);
+INSERT INTO book VALUES(6,'วิธีบริหารเวลา ให้คุ้มค่าที่สุดในแต่ละวัน', 'ทั่วไป', 84.55 , 9786164440098 );
+INSERT INTO book VALUES(7,'ไม่อยากเจ๊ง ต้องเก็งให้ถูก มองอสังหาฯ ด้วยสายตานักลงทุน (มืออาชีพ)', 'การเงินการลงทุน', 213.75 , 9786167913759  );
+INSERT INTO book VALUES(8,'Pilot DNA จากฝันสู่ฟ้า', 'การจัดการการศึกษา', 288.00, 9786160831968 );
+INSERT INTO book VALUES(9,'วิจัยไม่ใช่เรื่องยาก', 'การจัดการการศึกษา',114.00 ,  9786167398860);
+INSERT INTO book VALUES(10,'ระเบียบวิธีวิจัย หลักการและแนวคิด เทคนิคการเขียนรายงานการวิจัย', 'คู่มือเรียน - สอบ'304.00  , 9789744142627);
 
 INSERT INTO writer VALUES(1 , 'อิสญะ ตระกูลพุทธรักษา' , null , null);
 INSERT INTO writer VALUES(2 , 'ุฑาธิป พึ่งละออ' , null , null);

@@ -189,7 +189,7 @@ public class basket extends javax.swing.JFrame {
         
         try {
             if (my.updateStatus(cid)) {
-                JOptionPane.showMessageDialog(null, "SUCCESE");
+                JOptionPane.showMessageDialog(null, "Success");
                 
                 this.setVisible(false);
                 new gui().setVisible(true);

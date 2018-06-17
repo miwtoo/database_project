@@ -376,7 +376,7 @@ public class admin extends javax.swing.JFrame {
         String pubname = tb_pubname.getText();
         try {
             my.insertBookData(bookname,booktype,price,isbn, writename, tranname, componame, pubadd,pubname);
-            JOptionPane.showMessageDialog(null, "SUCCESE");
+            JOptionPane.showMessageDialog(null, "Success");
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
             //JOptionPane.showMessageDialog(null,"Error: " + ex);

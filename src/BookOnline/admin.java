@@ -368,7 +368,7 @@ public class admin extends javax.swing.JFrame {
         String bookname = tb_bookname.getText();
         String booktype = tb_type.getText();
         Double price = Double.valueOf(tb_price.getText());
-        int isbn = Integer.valueOf(tb_isbn.getText());
+        String isbn = tb_isbn.getText();
         String writename = tb_writename.getText();
         String tranname = tb_tran.getText();
         String componame = tb_compo.getText();

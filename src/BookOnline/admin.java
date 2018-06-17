@@ -325,8 +325,10 @@ public class admin extends javax.swing.JFrame {
                     model.addRow(new String[]{id, name});
                 }
             }
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex);
+        } catch (Exception ex) {
+            //System.out.println("Error: " + ex);
+            JOptionPane.showMessageDialog(null,"Error: " + ex);
+            
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -341,7 +343,6 @@ public class admin extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
         try {
                 DefaultTableModel model =(DefaultTableModel)del_BookTable.getModel();
                 model.setRowCount(0);

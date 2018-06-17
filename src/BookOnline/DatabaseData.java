@@ -28,6 +28,7 @@ public class DatabaseData {
     public ResultSet getPassword(String str) {
         try {
             String query = "select * from BOOK_ONLINE.account,BOOK_ONLINE.customer  WHERE username = '" + str + "' AND account.cus_id = customer.cus_id";
+            System.out.println(query);
             ResultSet rs = st.executeQuery(query);
             return rs;
         } catch (Exception e) {

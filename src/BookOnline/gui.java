@@ -227,11 +227,11 @@ public class gui extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             for (int i = 0; i < jTable1.getRowCount(); i++) {
                 boolean chk = StringToBoolean(jTable1.getValueAt(i, 0));
-                System.out.println("check "+i+" = "+chk);
+                //System.out.println("check "+i+" = "+chk);
                 if(chk){
                     int book_id = Integer.valueOf(jTable1.getValueAt(i, 1).toString());
                     my.insertBasket(id,book_id);
-                    //JOptionPane.showMessageDialog(null,"คุณได้เพิ่ม  '" + jTable1.getValueAt(i, 2).toString() + "'  เข้าตะกร้าแล้ว");
+                    JOptionPane.showMessageDialog(null,"คุณได้เพิ่ม  '" + jTable1.getValueAt(i, 2).toString() + "'  เข้าตะกร้าแล้ว");
                     model.removeRow(i);
                 }
             }   

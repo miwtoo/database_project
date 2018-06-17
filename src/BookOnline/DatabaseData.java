@@ -56,7 +56,7 @@ public class DatabaseData {
 
     public boolean insertBookData(String bookname, String booktype, Double price, int isbn,String writename, String tranname, String componame, String pubadd,String pubname) throws SQLException { 
 
-        int i = st.executeUpdate("INSERT ALL  INTO BOOK_ONLINE.book VALUES(BOOK_ONLINE.book_seq.nextval ,'"+bookname+"', '"+booktype+"', "+price+", "+isbn+" )  INTO BOOK_ONLINE.writer VALUES(BOOK_ONLINE.write_seq.nextval , '"+writename+"' , '"+tranname+"' , '"+componame+"')  INTO BOOK_ONLINE.Publisher VALUES(BOOK_ONLINE.book_seq.nextval ,'"+pubadd+"','"+pubname+"',BOOK_ONLINE.book_seq.nextval)  INTO BOOK_ONLINE.write VALUES(BOOK_ONLINE.write_seq.nextval,BOOK_ONLINE.book_seq.nextval)  SELECT * FROM dual"); 
+        int i = st.executeUpdate("INSERT ALL  INTO BOOK_ONLINE.book VALUES(BOOK_ONLINE.book_seq.nextval ,'"+bookname+"', '"+booktype+"', "+price+", '"+isbn+"' )  INTO BOOK_ONLINE.writer VALUES(BOOK_ONLINE.write_seq.nextval , '"+writename+"' , '"+tranname+"' , '"+componame+"')  INTO BOOK_ONLINE.Publisher VALUES(BOOK_ONLINE.book_seq.nextval ,'"+pubadd+"','"+pubname+"',BOOK_ONLINE.book_seq.nextval)  INTO BOOK_ONLINE.write VALUES(BOOK_ONLINE.write_seq.nextval,BOOK_ONLINE.book_seq.nextval)  SELECT * FROM dual"); 
         if (i > -1) {return true;}
         else {return false;} 
     }

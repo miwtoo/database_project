@@ -22,7 +22,7 @@ CREATE TABLE book(
     book_name       varchar(300)    null,
     type            varchar(100)    null,
     price_book      number          null,
-    isbn            number          null,
+    isbn            varchar(20)     null,
     PRIMARY KEY (book_id)
 );
 

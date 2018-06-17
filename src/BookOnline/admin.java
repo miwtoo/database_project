@@ -377,8 +377,9 @@ public class admin extends javax.swing.JFrame {
         try {
             my.insertBookData(bookname,booktype,price,isbn, writename, tranname, componame, pubadd,pubname);
             JOptionPane.showMessageDialog(null, "SUCCESE");
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex);
+        } catch (Exception ex) {
+            //System.out.println("Error: " + ex);
+            JOptionPane.showMessageDialog(null,"Error: " + ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
